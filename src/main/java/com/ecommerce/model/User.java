@@ -1,40 +1,40 @@
 package com.ecommerce.model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 /**
  * User class - Level 1 (outermost bean)
  * Contains ShoppingCart bean (Level 2)
  * Demonstrates both constructor and setter-based dependency injection
  */
+@Component
 public class User {
     private String userId;
     private String username;
+    @Value("${user.email}")
     private String email;
     private ShoppingCart shoppingCart;
 
-    // Default constructor
-    public User() {
-    }
-
-    // Constructor for constructor-based DI
-    public User(String userId, String username) {
+    public User(@Value("${user.id}") String userId, @Value("${user.username}") String username) {
         this.userId = userId;
         this.username = username;
     }
 
-    // Getters and Setters
     public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(@Value("${user.id:USER001}") String userId) {
         this.userId = userId;
     }
-
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(@Value("${user.username:john_doe}") String username) {
         this.username = username;
     }
 
@@ -42,7 +42,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@Value("${user.email:john.doe@example.com}") String email) {
         this.email = email;
     }
 
@@ -50,10 +50,10 @@ public class User {
         return shoppingCart;
     }
 
+    @Autowired
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
-
     @Override
     public String toString() {
         return "User{" +
@@ -62,5 +62,16 @@ public class User {
                 ", email='" + email + '\'' +
                 ", shoppingCart=" + shoppingCart +
                 '}';
+    }
+
+
+    @PostConstruct
+    public void init() {
+        System.out.println("User bean is initialized");
+    }
+
+    @PreDestroy
+    public void destroy() {
+        System.out.println("User bean is destroyed");
     }
 }

@@ -3,8 +3,10 @@ package com.ecommerce;
 import com.ecommerce.model.User;
 import com.ecommerce.model.ShoppingCart;
 import com.ecommerce.model.Item;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
 
 /**
  * Main application class to demonstrate Spring XML configuration
@@ -12,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * - User (Level 1) contains ShoppingCart (Level 2)
  * - ShoppingCart (Level 2) contains Items (Level 3)
  */
+@SpringBootApplication
 public class EcommerceApplication {
 
     public static void main(String[] args) {
@@ -19,8 +22,7 @@ public class EcommerceApplication {
         System.out.println("Spring XML DI Demo - E-commerce Application");
         System.out.println("=================================================\n");
 
-        // Load Spring XML configuration
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ConfigurableApplicationContext context = SpringApplication.run(EcommerceApplication.class, args);
 
         // Get the User bean from Spring container (Level 1)
         User user = (User) context.getBean("user");
@@ -71,7 +73,6 @@ public class EcommerceApplication {
         System.out.println("✓ Property File Injection: All values from application.properties");
         System.out.println("=================================================");
 
-        // Close the context
-        ((ClassPathXmlApplicationContext) context).close();
+        context.close();
     }
 }

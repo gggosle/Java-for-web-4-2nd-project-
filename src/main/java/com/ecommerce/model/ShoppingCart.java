@@ -1,5 +1,9 @@
 package com.ecommerce.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,28 +12,28 @@ import java.util.List;
  * Contains Item bean (Level 3)
  * Demonstrates setter-based dependency injection
  */
+@Component
 public class ShoppingCart {
+    @Value("${cart.id}")
     private String cartId;
     private List<Item> items;
+    @Value("${cart.status}")
     private String status;
 
-    // Default constructor
     public ShoppingCart() {
         this.items = new ArrayList<>();
     }
 
-    // Constructor with cartId
     public ShoppingCart(String cartId) {
         this.cartId = cartId;
         this.items = new ArrayList<>();
     }
 
-    // Getters and Setters
     public String getCartId() {
         return cartId;
     }
 
-    public void setCartId(String cartId) {
+    public void setCartId(@Value("${cart.id:CART001}") String cartId) {
         this.cartId = cartId;
     }
 
@@ -37,6 +41,7 @@ public class ShoppingCart {
         return items;
     }
 
+    @Autowired
     public void setItems(List<Item> items) {
         this.items = items;
     }
@@ -45,7 +50,7 @@ public class ShoppingCart {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(@Value("${cart.status:Active}") String status) {
         this.status = status;
     }
 
