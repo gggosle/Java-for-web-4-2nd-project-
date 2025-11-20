@@ -9,7 +9,6 @@ The project showcases:
 - **Constructor-based Dependency Injection**
 - **Setter-based Dependency Injection**
 - **Property File Configuration**
-- **XML-based Spring Configuration**
 
 ## Architecture
 
@@ -50,7 +49,6 @@ spring-xml-di-demo/
 │       │               ├── ShoppingCart.java        # Level 2 bean
 │       │               └── Item.java                # Level 3 bean
 │       └── resources/
-│           ├── applicationContext.xml               # Spring XML configuration
 │           └── application.properties               # Property values
 └── README.md
 ```
@@ -62,13 +60,6 @@ Contains all configurable values for beans:
 - User properties (userId, username, email)
 - Shopping cart properties (cartId, status)
 - Item properties (itemId, name, price, description) for 3 items
-
-### applicationContext.xml
-Spring XML configuration file that:
-1. Loads properties using `<context:property-placeholder>`
-2. Defines Item beans (Level 3) with constructor and setter injection
-3. Defines ShoppingCart bean (Level 2) injecting Item beans as a list
-4. Defines User bean (Level 1) injecting ShoppingCart bean
 
 ## Building and Running
 
@@ -127,12 +118,11 @@ Demonstrates 3 levels of dependency:
 ## Learning Outcomes
 
 This project demonstrates:
-1. XML-based Spring configuration (alternative to annotation-based)
-2. Different types of dependency injection (constructor vs setter)
-3. Injecting values from properties files
-4. Injecting complex types (lists, nested beans)
-5. Managing multi-level bean dependencies
-6. Spring ApplicationContext usage
+1. Different types of dependency injection (constructor vs setter)
+2. Injecting values from properties files
+3. Injecting complex types (lists, nested beans)
+4. Managing multi-level bean dependencies
+5. Spring ApplicationContext usage
 
 ## License
 
