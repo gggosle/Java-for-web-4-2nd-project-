@@ -8,12 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 
-/**
- * Main application class to demonstrate Spring XML configuration
- * with 3 levels of nested dependency injection:
- * - User (Level 1) contains ShoppingCart (Level 2)
- * - ShoppingCart (Level 2) contains Items (Level 3)
- */
 @SpringBootApplication
 public class EcommerceApplication {
 
@@ -24,10 +18,8 @@ public class EcommerceApplication {
 
         ConfigurableApplicationContext context = SpringApplication.run(EcommerceApplication.class, args);
 
-        // Get the User bean from Spring container (Level 1)
         User user = (User) context.getBean("user");
 
-        // Display nested dependency injection
         System.out.println("Demonstrating 3 Levels of Nested Dependency Injection:\n");
         
         System.out.println("LEVEL 1: User Bean");
@@ -37,7 +29,6 @@ public class EcommerceApplication {
         System.out.println("Email: " + user.getEmail());
         System.out.println();
 
-        // Access nested ShoppingCart (Level 2)
         ShoppingCart cart = user.getShoppingCart();
         System.out.println("LEVEL 2: ShoppingCart Bean (nested in User)");
         System.out.println("--------------------------------------------");
@@ -47,7 +38,6 @@ public class EcommerceApplication {
         System.out.println("Total Cart Value: $" + String.format("%.2f", cart.getTotalPrice()));
         System.out.println();
 
-        // Access nested Items (Level 3)
         System.out.println("LEVEL 3: Item Beans (nested in ShoppingCart)");
         System.out.println("---------------------------------------------");
         int itemNumber = 1;

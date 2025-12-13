@@ -5,11 +5,6 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-/**
- * User class - Level 1 (outermost bean)
- * Contains ShoppingCart bean (Level 2)
- * Demonstrates both constructor and setter-based dependency injection
- */
 @Component
 public class User {
     private String userId;
