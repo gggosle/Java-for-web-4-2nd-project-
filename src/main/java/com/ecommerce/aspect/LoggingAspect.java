@@ -1,4 +1,4 @@
-package com.ecommerce;
+package com.ecommerce.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -3,9 +3,8 @@ package com.ecommerce;
 import com.ecommerce.model.User;
 import com.ecommerce.model.ShoppingCart;
 import com.ecommerce.model.Item;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 @SpringBootApplication
@@ -16,7 +15,9 @@ public class EcommerceApplication {
         System.out.println("Spring XML DI Demo - E-commerce Application");
         System.out.println("=================================================\n");
 
-        ConfigurableApplicationContext context = SpringApplication.run(EcommerceApplication.class, args);
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(MyConfig.class);
+
 
         User user = (User) context.getBean("user");
 
