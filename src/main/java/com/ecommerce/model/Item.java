@@ -1,9 +1,5 @@
 package com.ecommerce.model;
 
-/**
- * Item class - Level 3 (innermost bean)
- * Demonstrates constructor-based dependency injection
- */
 public class Item {
     private String itemId;
     private String name;

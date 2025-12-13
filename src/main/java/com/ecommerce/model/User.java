@@ -1,16 +1,12 @@
 package com.ecommerce.model;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
-/**
- * User class - Level 1 (outermost bean)
- * Contains ShoppingCart bean (Level 2)
- * Demonstrates both constructor and setter-based dependency injection
- */
-@Component
+@Component("user")
 public class User {
     private String userId;
     private String username;
