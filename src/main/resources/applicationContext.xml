@@ -7,42 +7,31 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- Load properties file -->
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <!-- Level 3: Item beans - Using constructor-based DI with property values -->
     <bean id="item1" class="com.ecommerce.model.Item">
-        <!-- Constructor arguments for itemId, name, and price -->
         <constructor-arg value="${item1.id}"/>
         <constructor-arg value="${item1.name}"/>
         <constructor-arg value="${item1.price}"/>
-        <!-- Setter injection for description -->
         <property name="description" value="${item1.description}"/>
     </bean>
 
     <bean id="item2" class="com.ecommerce.model.Item">
-        <!-- Constructor arguments -->
         <constructor-arg value="${item2.id}"/>
         <constructor-arg value="${item2.name}"/>
         <constructor-arg value="${item2.price}"/>
-        <!-- Setter injection for description -->
         <property name="description" value="${item2.description}"/>
     </bean>
 
     <bean id="item3" class="com.ecommerce.model.Item">
-        <!-- Constructor arguments -->
         <constructor-arg value="${item3.id}"/>
         <constructor-arg value="${item3.name}"/>
         <constructor-arg value="${item3.price}"/>
-        <!-- Setter injection for description -->
         <property name="description" value="${item3.description}"/>
     </bean>
 
-    <!-- Level 2: ShoppingCart bean - Using setter-based DI with nested Item beans -->
     <bean id="shoppingCart" class="com.ecommerce.model.ShoppingCart">
-        <!-- Constructor argument for cartId -->
         <constructor-arg value="${cart.id}"/>
-        <!-- Setter injection for items list (nested beans) -->
         <property name="items">
             <list>
                 <ref bean="item1"/>
@@ -50,18 +39,13 @@
                 <ref bean="item3"/>
             </list>
         </property>
-        <!-- Setter injection for status from properties -->
         <property name="status" value="${cart.status}"/>
     </bean>
 
-    <!-- Level 1: User bean - Using both constructor and setter-based DI with nested ShoppingCart -->
     <bean id="user" class="com.ecommerce.model.User">
-        <!-- Constructor arguments for userId and username -->
         <constructor-arg value="${user.id}"/>
         <constructor-arg value="${user.username}"/>
-        <!-- Setter injection for email from properties -->
         <property name="email" value="${user.email}"/>
-        <!-- Setter injection for shoppingCart (nested bean) -->
         <property name="shoppingCart" ref="shoppingCart"/>
     </bean>
 
