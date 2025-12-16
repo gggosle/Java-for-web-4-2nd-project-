@@ -7,11 +7,6 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ShoppingCart class - Level 2 (middle bean)
- * Contains Item bean (Level 3)
- * Demonstrates setter-based dependency injection
- */
 @Component
 public class ShoppingCart {
     @Value("${cart.id}")
