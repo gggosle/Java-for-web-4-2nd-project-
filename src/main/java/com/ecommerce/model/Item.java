@@ -1,27 +1,20 @@
 package com.ecommerce.model;
 
-/**
- * Item class - Level 3 (innermost bean)
- * Demonstrates constructor-based dependency injection
- */
 public class Item {
     private String itemId;
     private String name;
     private double price;
     private String description;
 
-    // Constructor for constructor-based DI
     public Item(String itemId, String name, double price) {
         this.itemId = itemId;
         this.name = name;
         this.price = price;
     }
 
-    // Default constructor
     public Item() {
     }
 
-    // Getters and Setters
     public String getItemId() {
         return itemId;
     }

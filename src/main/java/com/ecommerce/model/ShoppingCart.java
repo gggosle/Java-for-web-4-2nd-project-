@@ -3,28 +3,20 @@ package com.ecommerce.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * ShoppingCart class - Level 2 (middle bean)
- * Contains Item bean (Level 3)
- * Demonstrates setter-based dependency injection
- */
 public class ShoppingCart {
     private String cartId;
     private List<Item> items;
     private String status;
 
-    // Default constructor
     public ShoppingCart() {
         this.items = new ArrayList<>();
     }
 
-    // Constructor with cartId
     public ShoppingCart(String cartId) {
         this.cartId = cartId;
         this.items = new ArrayList<>();
     }
 
-    // Getters and Setters
     public String getCartId() {
         return cartId;
     }

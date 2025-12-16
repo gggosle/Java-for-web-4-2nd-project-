@@ -1,27 +1,19 @@
 package com.ecommerce.model;
 
-/**
- * User class - Level 1 (outermost bean)
- * Contains ShoppingCart bean (Level 2)
- * Demonstrates both constructor and setter-based dependency injection
- */
 public class User {
     private String userId;
     private String username;
     private String email;
     private ShoppingCart shoppingCart;
 
-    // Default constructor
     public User() {
     }
 
-    // Constructor for constructor-based DI
     public User(String userId, String username) {
         this.userId = userId;
         this.username = username;
     }
 
-    // Getters and Setters
     public String getUserId() {
         return userId;
     }
